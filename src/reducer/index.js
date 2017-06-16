@@ -32,8 +32,7 @@ function contactsReducer (state = initialState, action) {
 		case CHANGE_GROUP:
 			return state.update('userList', arr => arr.map(item => {
 				return item.get('id') == action.id ? item.set('group', action.group) : item
-			})).set('currentUserInfo', null)
-			
+			})).setIn(['currentUserInfo', '0', 'group'], action.group)
 		default:
 			return state
 	}
